@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><strong>Student Marks Prediction</strong></title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="margin-bottom: 20px;">Student Marks Prediction</h2>
+    <img src="{{ url_for('static', filename='images/college_banner2.png') }}" alt="College Banner" width="2002" height="491" style="margin-bottom: 20px;">
+    <form action="/predict" method="post">
+        <label for="study_hours">Enter Study Hours:</label><br>
+        <input type="number" id="study_hours" name="study_hours" min="0" max="24" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <h3>Prediction:</h3>
+        <p>{{ prediction_text }}</p>
+    {% endif %}
+</body>
+</html>
